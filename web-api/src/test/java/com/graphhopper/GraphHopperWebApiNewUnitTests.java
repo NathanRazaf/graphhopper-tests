@@ -1,5 +1,6 @@
 package com.graphhopper;
 
+import com.github.javafaker.Faker;
 import com.graphhopper.util.Helper;
 import com.graphhopper.util.PointList;
 import com.graphhopper.util.TurnCostsConfig;
@@ -134,15 +135,18 @@ public class GraphHopperWebApiNewUnitTests {
     public void testGHPointInstantiationFromGeoPoint() {
         // Arrange
         GeometryFactory gf = new GeometryFactory();
-        Coordinate coordinate = new Coordinate(10, 20);
+        Faker faker = new Faker();
+        double x = faker.number().randomDouble(3,10,20);
+        double y = faker.number().randomDouble(3,10,20);
+        Coordinate coordinate = new Coordinate(x, y);
         Point point = gf.createPoint(coordinate);
 
         // Act
         GHPoint ghPoint = GHPoint.create(point);
 
         // Assert
-        assertEquals(20, ghPoint.getLat());
-        assertEquals(10, ghPoint.getLon());
+        assertEquals(y, ghPoint.getLat());
+        assertEquals(x, ghPoint.getLon());
     }
 
 
