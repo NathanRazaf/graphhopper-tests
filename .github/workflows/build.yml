@@ -8,7 +8,7 @@ jobs:
       matrix:
         java-version: [ 22 ]
         jvm-flags:
-          - "XX:+PrintCompilation" # Print Compilation
+          - "-XX:+PrintCompilation" # Print Compilation
           - "-Xms1g -Xmx1g"     # Memory Limit
           - "-XX:+UseParallelGC"   # Parallel Garbage Collector
           - "-XX:+TieredCompilation" # Tiered Compilation
