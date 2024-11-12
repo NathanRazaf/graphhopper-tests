@@ -8,11 +8,12 @@ jobs:
       matrix:
         java-version: [ 22 ]
         jvm-flags:
-          - "-Xms512m -Xmx1g"     # Limite de mémoire
-          - "-XX:+UseG1GC"         # G1 Garbage Collector
+          - "XX:+PrintCompilation" # Print Compilation
+          - "-Xms1g -Xmx1g"     # Memory Limit
           - "-XX:+UseParallelGC"   # Parallel Garbage Collector
-          - "-XX:+UseZGC"          # Z Garbage Collector (expérimental)
-          - "-XX:+UnlockExperimentalVMOptions -XX:+UseShenandoahGC"  # Shenandoah GC
+          - "-XX:+TieredCompilation" # Tiered Compilation
+          - "-XX:+UseStringDeduplication"  # String Deduplication
+
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-java@v3
